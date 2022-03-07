@@ -19,19 +19,19 @@ You can test if you have internet connection by running `pacman -Syy`.
 
 ## Set Time
 
-timedatectl set-ntp true
+`timedatectl set-ntp true`
 
 ## Update mirror list 
 
-reflector --country Australia --protocol https --latest 10 --Sort Rate --save /etc/pacman.d/mirrorlist --verbose
+`reflector --country Australia --protocol https --latest 10 --Sort Rate --save /etc/pacman.d/mirrorlist --verbose`
 
 ## list disk devices
 
-lsblk
+`lsblk`
 
 ## Partitioning
 
-cfdisk -z /dev/[device] e.g. cfdisk -z /dev/nvme0n1
+`cfdisk -z /dev/[device]` e.g. cfdisk -z /dev/nvme0n1
 
 [Arch Wiki] https://man.archlinux.org/man/cfdisk.8.en
 
@@ -48,56 +48,56 @@ I will be using /dev/nvme0n1 moving forward
 
 ## Format Partitions
 
-lsblk
+#1: `lsblk`
 
-mkfs.fat -F32 /dev/nvme0n1p1
+#2: `mkfs.fat -F32 /dev/nvme0n1p1`
 
-mkswap /dev/nvme0n1p2
+#3: `mkswap /dev/nvme0n1p2`
 
-swapon /dev/nvme0n1p2
+4: `swapon /dev/nvme0n1p2`
 
-mkfs.btrs /dev/nvme0n1p3
+5: `mkfs.btrs /dev/nvme0n1p3`
 
 
 ## Create BTRFS subvolumes
 
-mount /dev/nvme0n1p3 /mnt
+#1: `mount /dev/nvme0n1p3 /mnt`
 
-cd /mnt
+#2: `cd /mnt`
 
-btrfs subvolume create @
+#3: `btrfs subvolume create @`
 
-btrfs subvolume create @home
+#4: `btrfs subvolume create @home`
 
-btrfs subvolume create @var
+#5: `btrfs subvolume create @var`
 
-btrfs subvolume create @data
+#6: `btrfs subvolume create @data`
 
-btrfs subvolume create @srv
+#7: `btrfs subvolume create @srv`
 
-cd
+#8: `cd`
 
-umount /mnt
+#9: `umount /mnt`
 
 ## Mount BTRFS subvolumes and EFI
 
-mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@ /dev/nvme0n1p3 /mnt
+#1: `mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@ /dev/nvme0n1p3 /mnt`
 
-mkdir -p /mnt/{boot/efi,home,var,data,src}
+#2: `mkdir -p /mnt/{boot/efi,home,var,data,src}`
 
-mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /dev/nvme0n1p3 /mnt/home
+#3: `mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /dev/nvme0n1p3 /mnt/home`
 
-mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /dev/nvme0n1p3 /mnt/var
+#4: `mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /dev/nvme0n1p3 /mnt/var`
 
-mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@data /dev/nvme0n1p3 /mnt/data
+#5: `mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@data /dev/nvme0n1p3 /mnt/data`
 
-mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@src /dev/nvme0n1p3 /mnt/srv
+#6: `mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@src /dev/nvme0n1p3 /mnt/srv`
 
-mount /dev/nvme0n1p1 /mnt/boot/efi
+#7: `mount /dev/nvme0n1p1 /mnt/boot/efi`
 
 ## Review partitions
 
-lsblk
+#1: `lsblk`
 
 Partitions should look like this
 
