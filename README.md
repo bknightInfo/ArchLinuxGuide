@@ -73,7 +73,7 @@ btrfs subvolume create @var
 
 btrfs subvolume create @data
 
-btrfs subvolume create @src
+btrfs subvolume create @srv
 
 cd
 
@@ -91,7 +91,7 @@ mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@home /de
 
 mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@data /dev/nvme0n1p3 /mnt/data
 
-mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@src /dev/nvme0n1p3 /mnt/src
+mount -o noatime,compress=zstd,ssd,discard=async,space_cache=v2,subvol=@src /dev/nvme0n1p3 /mnt/srv
 
 mount /dev/nvme0n1p1 /mnt/boot/efi
 
