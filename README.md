@@ -39,9 +39,9 @@ Ideal setup
 
 | Mount point | Partition | Partition type | FS Type     | Bootable flag | Size   |
 |-------------|-----------|---------------------|-----------|----|--------|
-| /boot/efi       | /dev/sda1 | EFI System Partition| FAT32 | Yes           | 512 MiB|
-| [SWAP]      | /dev/sda2 | Linux swap | SWAP          | No            | 17 GiB |
-| /           | /dev/sda3 | Linux | BTRFS       | No            | remaining GB|
+| /boot/efi       | /dev/[Partition]1 | EFI System Partition| FAT32 | Yes           | 512 MiB|
+| [SWAP]      | /dev/[Partition]2 | Linux swap | SWAP          | No            | 17 GiB |
+| /           | /dev/[Partition]3 | Linux | BTRFS       | No            | remaining GB|
 
 I will be using /dev/nvme0n1 moving forward
 
