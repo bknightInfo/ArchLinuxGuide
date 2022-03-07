@@ -54,9 +54,9 @@ I will be using /dev/nvme0n1 moving forward
 
 #3: `mkswap /dev/nvme0n1p2`
 
-4: `swapon /dev/nvme0n1p2`
+#4: `swapon /dev/nvme0n1p2`
 
-5: `mkfs.btrs /dev/nvme0n1p3`
+#5: `mkfs.btrs /dev/nvme0n1p3`
 
 
 ## Create BTRFS subvolumes
@@ -78,6 +78,7 @@ I will be using /dev/nvme0n1 moving forward
 #8: `cd`
 
 #9: `umount /mnt`
+
 
 ## Mount BTRFS subvolumes and EFI
 
