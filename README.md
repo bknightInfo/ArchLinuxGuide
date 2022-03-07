@@ -1,8 +1,6 @@
 # Arch installation on a BTRFS root filesystem with timeshift
 Instructions to perform an installation of Arch Linux using BTRFS filesystem in /
 
-[TOC]
-
 ## Create Arch ISO or Use Image
 
 Download ArchISO from <https://archlinux.org/download/> and put on a USB drive with [Etcher](https://www.balena.io/etcher/), [Ventoy](https://www.ventoy.net/en/index.html), or [Rufus](https://rufus.ie/en/)
