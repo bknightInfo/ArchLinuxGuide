@@ -167,60 +167,60 @@ mkinitcpio -p linux
 
 ## Install the rest of base install
 
-pacman -Syy
+#1: Run `gpacman -Syy`
 
-pacman -S acpi acpi_call acpid alsa-plugins alsa-utils avahi base-devel bluez bluez-utils cups dnsutils dosfstools efibootmgr grub gvfs gvfs-smb inetutils linux-headers mtools networkmanager network-manager-applet neofetch nfs-utils ntfs-3g openssh os-prober pipewire pipewire-alsa pipewire-jack pipewire-pulse reflector rsync system-config-printer tlp wpa_supplicant xdg-user-dirs xdg-utils 
+#2: Run `gpacman -S acpi acpi_call acpid alsa-plugins alsa-utils avahi base-devel bluez bluez-utils cups dnsutils dosfstools efibootmgr grub gvfs gvfs-smb inetutils linux-headers mtools networkmanager network-manager-applet neofetch nfs-utils ntfs-3g openssh os-prober pipewire pipewire-alsa pipewire-jack pipewire-pulse reflector rsync system-config-printer tlp wpa_supplicant xdg-user-dirs xdg-utils`
 
 ## Install bootloader
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux
+#1: Run `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux`
 
-sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
+#2: Run `sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub`
 
-grub-mkconfig -o /boot/grub/grub.cfg  
+#3: Run `grub-mkconfig -o /boot/grub/grub.cfg`
 
 ## Add new user
 
-useradd -m -G wheel yourUsername
+#1: Run `useradd -m -G wheel yourUsername`
 
-passwd yourUsername 
+#2: Run `passwd yourUsername`
 
-uncomment "%wheel ALL=(ALL) ALL" in the following line
+#3: Run `uncomment "%wheel ALL=(ALL) ALL" in the following line`
 
-export EDITOR=nano visudo
+#4: Run `export EDITOR=nano visudo`
 
 
 ## Update mirror list 
 
-reflector --country Australia --protocol https --latest 10 --Sort Rate --save /etc/pacman.d/mirrorlist --verbose
+#1: Run `reflector --country Australia --protocol https --latest 10 --Sort Rate --save /etc/pacman.d/mirrorlist --verbose`
 
 ## start services
 
-sudo systemctl enable acpid
+#1: Run `sudo systemctl enable acpid`
 
-sudo systemctl enable avahi-daemon
+#2: Run `sudo systemctl enable avahi-daemon`
 
-sudo systemctl enable bluetooth
+#3: Run `sudo systemctl enable bluetooth`
 
-sudo systemctl enable cups
+#4: Run `sudo systemctl enable cups`
 
-sudo systemctl enable fstrim.timer
+#5: Run `sudo systemctl enable fstrim.timer`
 
-sudo systemctl enable NetworkManager
+#6: Run `sudo systemctl enable NetworkManager`
 
-sudo systemctl enable reflector.timer
+#7: Run `sudo systemctl enable reflector.timer`
 
-sudo systemctl enable sshd
+#8: Run `sudo systemctl enable sshd`
 
-sudo systemctl enable tlp
+#9: Run `sudo systemctl enable tlp`
 
 
 ## Reboot
 
-exit
+#1: Run `gexit`
 
-umount -a
+#1: Run `gumount -a`
 
-reboot
+#1: Run `greboot`
 
 ## Post install 
 
@@ -228,29 +228,34 @@ login as yourUsername
 
 ## Install AUR helper
 
-git clone https://aur.archlinux.org/paru-bin
+#1: Run `git clone https://aur.archlinux.org/paru-bin`
 
-cd paru-bin
+#2: Run `cd paru-bin`
 
-makepkg -si
+#3: Run `makepkg -si`
 
-cd
+#4: Run `cd`
 
-rm -rf paru-bin 
+#5: Run `m -rf paru-bin`
 
 ## Install desktop (XCFE)
 
-sudo pacman -S xfce4 xfce4-goodies libreoffice-fresh lightdm firefox vlc xorg
+#1: Run `sudo pacman -S xfce4 xfce4-goodies lightdm vlc xorg amarok p7zip p7zip-plugins unrar tar`
+
+## Codecs and Plugins
+You will have to install codecs to play audio and video files.
+
+#1: Run `sudo pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins`
 
 ## AUR install packages
 
-paru -S zramd timeshift timeshift-autosnap brave-bin ttf-ms-fonts noto-fonts ttf-roboto ttf-inconsolata
+#1: Run `sparu -S zramd timeshift timeshift-autosnap brave-bin ttf-ms-fonts noto-fonts ttf-roboto ttf-inconsolata pamac-aur`
 
-## start remaining services
+## Start remaining services
 
-sudo systemctl enable zramd
+#1: Run `ssudo systemctl enable zramd`
 
-sudo systemctl enable lightdm
+#2: Run `ssudo systemctl enable lightdm`
 
 ## Troubleshooting
 
